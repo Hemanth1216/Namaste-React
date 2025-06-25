@@ -1,0 +1,30 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "This is a course follow up of namaste react",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hemanth1216/Namaste-React.git"
+  },
+  "author": "Hemanth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hemanth1216/Namaste-React/issues"
+  },
+  "homepage": "https://github.com/Hemanth1216/Namaste-React#readme",
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+}
