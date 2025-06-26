@@ -1,44 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
 
-const Header = () => {
-  return (
-    <div className="header">
-      <div className="logo">
-        <img
-          className="food-logo"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4G7SValI18omeEupZZrkvEN7f-B9xcSs4OA&s"
-          alt="Food App Logo"
-        />
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-const RestaurantCard = (props) => {
-    const {resData} = props
-    return (
-        <div className="res-card" style={styleCard}>
-            <img className="food-image" src={resData.image} />
-            <h3>{resData.name}</h3>
-            <h4>{resData.item}</h4>
-            <h4>{resData.rating + "★"}</h4>
-            <h4>{resData.time + " mins"}</h4>
-        </div>)
-};
-
-const styleCard = {
-  backgroundColor: "#f0f0f0",
-};
-
-const data = [
+export const data = [
   {
     id: 1,
     name: "Parni's Kitchen",
@@ -160,29 +121,3 @@ const data = [
     time: 36
   }
 ];
-
-
-
-const Body = () => {
-  return (
-    <div className="body">
-      <div className="search">
-        <h3> Search </h3>
-      </div>
-      <div className="res-container">
-        {
-            data.map(restaurant => <RestaurantCard key={restaurant.id} resData={restaurant}/>)
-        }
-      </div>
-    </div>
-  );
-};
-const AppLayout = () => (
-  <div className="app">
-    <Header></Header>
-    <Body />
-  </div>
-);
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
