@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { CDN_LOGO_URL } from "../utils/constants";
 
 const Header = () => {
@@ -12,8 +13,12 @@ const Header = () => {
       </div>
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
           <li>Cart</li>
         </ul>
       </div>
