@@ -12,7 +12,7 @@ import Shimmer from "./components/Shimmer";
 const AppLayout = () => {
   const onlineStatus = useOnlineStatus();
   return (
-    <div className="app">
+    <div className="pt-24">
       <Header></Header>
       {onlineStatus ? <Outlet /> : <Offline />}
     </div>

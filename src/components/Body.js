@@ -29,15 +29,15 @@ export const Body = () => {
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
-      <div className="body-header">
-        <div className="search">
-          <input
+    <div className="">
+      <div className="flex m-5 gap-12">
+        <div className="flex gap-2.5 ml-4">
+          <input className="border border-solid border-black rounded-sm"
             type="text"
             value={searchText}
             onChange={(event) => setSearchText(event.target.value)}
           ></input>
-          <button
+          <button className="bg-blue-300 rounded-sm cursor-pointer px-4 py-1"
             onClick={() => {
               const filteredData = listOfRestaurants.filter((res) => {
                 return res.info.name
@@ -51,8 +51,8 @@ export const Body = () => {
             Search{" "}
           </button>
         </div>
-        <div className="filter-btn">
-          <button
+        <div className="">
+          <button className="bg-green-300 rounded-sm cursor-pointer px-4 py-1"
             onClick={() => {
               const filteredData = listOfRestaurants.filter((restaurant) => {
                 return restaurant.info.avgRating >= 4.5;
@@ -60,11 +60,11 @@ export const Body = () => {
               setFilteredList(filteredData);
             }}
           >
-            Top rated restaurants
+            Top rated
           </button>
         </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap m-5">
         {filteredList.map((restaurant) => (
           <Link
             to={"/restaurant/" + restaurant.info.id}

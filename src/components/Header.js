@@ -6,29 +6,29 @@ const Header = () => {
 
   const onlineStatus = useOnlineStatus();
   return (
-    <div className="header">
+    <div className="flex justify-between items-center shadow-md fixed top-0 left-0 right-0 h-24 py-8 z-[1000] bg-gray-100">
       <div className="logo">
         <img
-          className="food-logo"
+          className="w-[128]"
           src={CDN_LOGO_URL}
           alt="Food App Logo"
         />
       </div>
       <div className="nav-items">
-        <ul>
-          <li>
+        <ul className="flex text-base font-semibold tracking-normal font-[Gilroy,arial,Helvetica Neue,sans-serif]">
+          <li className="p-2.5 m-2.5">
             { onlineStatus ?  "🟢" : "🔴" }
           </li>
-          <li>
+          <li className="p-2.5 m-2.5">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="p-2.5 m-2.5">
             <Link to="/about">About</Link>
           </li>
-          <li>
+          <li className="p-2.5 m-2.5">
             <Link to="/groceries">Groceries</Link>
           </li>
-          <li>Cart</li>
+          <li className="p-2.5 m-2.5">Cart</li>
         </ul>
       </div>
     </div>
