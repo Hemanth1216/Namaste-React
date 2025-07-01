@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { Body } from "./components/Body";
 import Header from "./components/Header";
@@ -8,14 +8,23 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import useOnlineStatus from "./utils/useOnlineStatus";
 import Offline from "./components/Offline";
 import Shimmer from "./components/Shimmer";
+import UserContext from "./utils/UserContext";
 
 const AppLayout = () => {
   const onlineStatus = useOnlineStatus();
+  const data = {
+    name: "Karthik",
+    project: "OneScan",
+    role: "AI Engineer"
+  };
+  const [userData, setUserData] = useState(data);
   return (
-    <div className="pt-24">
-      <Header></Header>
-      {onlineStatus ? <Outlet /> : <Offline />}
-    </div>
+    <UserContext.Provider value={{userData: userData, setUserData}}>
+      <div className="pt-24">
+        <Header></Header>
+        {onlineStatus ? <Outlet /> : <Offline />}
+      </div>
+    </UserContext.Provider>
   );
 };
 

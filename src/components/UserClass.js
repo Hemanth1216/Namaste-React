@@ -1,4 +1,5 @@
 import React from "react";
+import UserContext from "../utils/UserContext";
 
 class UserClass extends React.Component {
   constructor(props) {
@@ -14,6 +15,9 @@ class UserClass extends React.Component {
     return (
       <div>
         <h2>Name: {name}</h2>
+        <UserContext.Consumer>
+          {({userData}) => <h1>{userData.role} - {userData.project}</h1>}
+        </UserContext.Consumer>
         <h4>Count: {count}</h4>
         <button
           onClick={() => {
