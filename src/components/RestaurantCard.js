@@ -19,3 +19,15 @@ export const RestaurantCard = (props) => {
 const styleCard = {
   backgroundColor: "#f0f0f0",
 };
+
+
+export const withPromotedLabel = (WrappedComponent) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute p-2 mx-3 my-1 bg-black text-white rounded-md">Promoted</label>
+        <WrappedComponent {...props}/>
+      </div>
+    )
+  }
+}

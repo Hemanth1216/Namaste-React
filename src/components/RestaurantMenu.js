@@ -1,27 +1,30 @@
-import { useEffect, useState } from "react";
-import Shimmer from "./Shimmer";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { SWIGGY_RESTAURANT_MENU_URL } from "../utils/constants";
+import Shimmer from "./Shimmer";
 import useRestaurant from "../utils/useRestaurant";
+import RestaurantItemCategory from "./RestaurantItemCategory";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useRestaurant(resId);
+  const [showIndex, setShowIndex] = useState(null);
   const restaurantData = resInfo?.data?.cards[2]?.card?.card?.info;
-  const menuData = resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2];
-
-  const getItemCards = (data) => {
-    return (
-      data?.card?.card?.itemCards ||
-      data?.card?.card?.categories?.[0]?.itemCards ||
-      []
+  const itemCategories =
+    resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) => {
+        return (
+          c.card.card["@type"] ===
+          "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+        );
+      }
     );
-  };
 
-  return restaurantData == null ? <Shimmer /> : (
-    <div className="restaurant-page-container">
-      <div className="restaurant-details">
-        <h2>{restaurantData.name}</h2>
+  return restaurantData == null ? (
+    <Shimmer />
+  ) : (
+    <div className="restaurant-page-container text-center my-4">
+      <div className="restaurant-details mb-4">
+        <h2 className="font-black text-2xl">{restaurantData.name}</h2>
         <p>
           {restaurantData.cuisines.join(", ")} -{" "}
           {restaurantData.costForTwoMessage} -{" "}
@@ -31,14 +34,17 @@ const RestaurantMenu = () => {
       </div>
 
       <div className="restaurant-menu">
-        <h3>Menu</h3>
         <ul>
-          {getItemCards(menuData).map((item) => (
-            <li key={item.card.info.id}>
-              {item.card.info.name} - Rs.{" "}
-              {item.card.info.price / 100 || item.card.info.defaultPrice / 100}
-            </li>
-          ))}
+          {itemCategories.map((itemCategory, index) => {
+            return (
+              <RestaurantItemCategory
+                key={itemCategory.card.card.categoryId}
+                resItemData={itemCategory.card.card}
+                isActive={index === showIndex}
+                onShow={() => showIndex === index ? setShowIndex(null) : setShowIndex(index)}
+              />
+            );
+          })}
         </ul>
       </div>
     </div>
