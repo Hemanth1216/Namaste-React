@@ -9,6 +9,8 @@ import useOnlineStatus from "./utils/useOnlineStatus";
 import Offline from "./components/Offline";
 import Shimmer from "./components/Shimmer";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 const AppLayout = () => {
   const onlineStatus = useOnlineStatus();
@@ -19,12 +21,14 @@ const AppLayout = () => {
   };
   const [userData, setUserData] = useState(data);
   return (
-    <UserContext.Provider value={{userData: userData, setUserData}}>
-      <div className="pt-24">
-        <Header></Header>
-        {onlineStatus ? <Outlet /> : <Offline />}
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{userData: userData, setUserData}}>
+        <div className="pt-24">
+          <Header></Header>
+          {onlineStatus ? <Outlet /> : <Offline />}
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 

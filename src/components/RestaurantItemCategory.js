@@ -1,7 +1,6 @@
 import Dish from "./Dish";
 
 const RestaurantItemCategory = ({ resItemData, isActive, onShow }) => {
-  console.log(resItemData);
 
   return (
     <div className="restaurant-item-category">
@@ -20,11 +19,6 @@ const RestaurantItemCategory = ({ resItemData, isActive, onShow }) => {
             {resItemData.itemCards.map((itemCard) => {
               return (
                 <Dish key={itemCard.card.info.id} dishData={itemCard.card.info}/>
-                // <li key={itemCard.card.info.id}>
-                //   {itemCard.card.info.name} - Rs.{" "}
-                //   {itemCard.card.info.price / 100 ||
-                //     itemCard.card.info.price / 100}
-                // </li>
               );
             })}
           </ul>
