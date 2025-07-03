@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { addItem } from "../utils/cartSlice";
 
-const Dish = ({ dishData }) => {
+const Dish = ({ dishData, source}) => {
   const { name, price, defaultPrice } = dishData;
   const dispatch = useDispatch();
   const addToCart = () => {
@@ -9,9 +9,11 @@ const Dish = ({ dishData }) => {
   }
   return (
     <div className="dish m-3">
-        {name} - Rs. {price / 100 || defaultPrice / 100}
-        <button className="border border-solids cursor-pointer px-2 ml-5 bg-black rounded-md text-white"
-        onClick={() => addToCart()}> + </button>
+        <span>
+          {name} - Rs. {price / 100 || defaultPrice / 100}
+        </span>
+        { source != "cart" && <button className="border border-solids cursor-pointer px-2 ml-5 bg-black rounded-md text-white"
+        onClick={() => addToCart()}> + </button> }
     </div>
   );
 };

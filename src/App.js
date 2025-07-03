@@ -11,6 +11,7 @@ import Shimmer from "./components/Shimmer";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 const AppLayout = () => {
   const onlineStatus = useOnlineStatus();
@@ -58,6 +59,10 @@ const appRouter = createBrowserRouter([
         path: "/groceries",
         element: <Grocery />,
       },
+      {
+        path: "/cart",
+        element: <Cart />
+      }
     ],
     errorElement: <Error />,
   },

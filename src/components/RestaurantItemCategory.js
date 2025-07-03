@@ -18,7 +18,7 @@ const RestaurantItemCategory = ({ resItemData, isActive, onShow }) => {
           <ul>
             {resItemData.itemCards.map((itemCard) => {
               return (
-                <Dish key={itemCard.card.info.id} dishData={itemCard.card.info}/>
+                <Dish key={itemCard.card.info.id} dishData={itemCard.card.info} />
               );
             })}
           </ul>

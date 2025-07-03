@@ -35,7 +35,9 @@ const Header = () => {
           <li className="p-2.5 m-2.5">
             <Link to="/groceries">Groceries</Link>
           </li>
-          <li className="p-2.5 m-2.5">Cart ({cartItems.length} Items)</li>
+          <li className="p-2.5 m-2.5">
+            <Link to="/cart">Cart ({cartItems.length} Items)</Link>
+          </li>
           <li className="p-2.5 m-2.5">{userData.name}</li>
         </ul>
       </div>
